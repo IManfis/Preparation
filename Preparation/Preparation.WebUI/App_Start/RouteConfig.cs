@@ -9,6 +9,8 @@ namespace Preparation.WebUI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
@@ -19,6 +21,18 @@ namespace Preparation.WebUI
                     id = UrlParameter.Optional
                 }
             );
+
+
+            routes.MapRoute(null,
+             "",
+             new
+             {
+                 controller = "Preparation",
+                 action = "Filter",
+                 filter = (string)null,
+                 value = (string)null
+             }
+             );
         }
     }
 }

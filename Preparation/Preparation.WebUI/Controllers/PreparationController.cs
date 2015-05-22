@@ -10,23 +10,24 @@ namespace Preparation.WebUI.Controllers
         //
         // GET: /Preparation/
 
-        private IPreparationStore preparationStore;
+        private readonly IPreparationStore _preparationStore;
 
         public PreparationController(IPreparationStore preparationStore)
         {
-            this.preparationStore = preparationStore;
+            this._preparationStore = preparationStore;
         }
 
         public ViewResult List()
         {
-            var model = preparationStore.GetAll();
+            var model = _preparationStore.GetAll();
 
             return View(model);
         }
 
-        public PartialViewResult Filter(string filter, string value)
+        public ViewResult Filter(string filter, string value)
         {
-            return PartialView();
+            var model = _preparationStore.FilterMedicaments(filter, value);
+            return View("List",model);
         }
     }
 }

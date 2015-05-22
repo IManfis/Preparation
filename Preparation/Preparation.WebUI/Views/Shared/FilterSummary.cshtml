@@ -1,0 +1,31 @@
+﻿@using Preparation.Domain.Entities
+@model IEnumerable<Medicament>
+
+@using (Html.BeginForm("Filter", "Preparation", FormMethod.Post, new {@class = "form-inline", id = "Producer", style = "display: none; margin-bottom: 20px;" }))
+{
+    <input type="hidden" name="filter" value="Producer" />
+    <p class="lead">Выберите производителя</p>
+    <div class="form-group">
+        <input type="text" name="value" class="form-control">
+    </div>
+    <input class="btn btn-default" type="submit" value="Отправить" />
+}
+@using (Html.BeginForm("Filter", "Preparation", FormMethod.Post, new {@class = "form-inline", id = "ReleaseForm", style = "display: none; margin-bottom: 20px;" }))
+{
+    <input type="hidden" name="filter" value="ReleaseForm" />
+    <p class="lead">Выберите форму выпуска</p>
+    <div class="form-group">
+        <input type="text" name="value" class="form-control" value="">
+
+    </div>
+    <input type="submit" value="Отправить" class="btn btn-default" />
+}
+@using (Html.BeginForm("Filter", "Preparation", FormMethod.Post, new { @class = "form-inline", id = "ActionSubstance", style = "display: none; margin-bottom: 20px;" }))
+{
+    <input type="hidden" name="filter" value="ActionSubstance" />
+    <p class="lead">Выберите состав</p>
+    <div class="form-group">
+        <input type="text" name="value" class="form-control">
+    </div>
+    <input type="submit" value="Отправить" class="btn btn-default" />
+}

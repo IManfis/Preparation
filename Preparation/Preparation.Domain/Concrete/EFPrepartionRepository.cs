@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Preparation.Domain.Abstract;
 using Preparation.Domain.Entities;
 
@@ -8,9 +9,9 @@ namespace Preparation.Domain.Concrete
     {
         EFDbContext context = new EFDbContext();
 
-        public IEnumerable<Medicament> Medicaments
+        public ICollection<Medicament> Medicaments
         {
-            get { return context.Medicaments; }
+            get { return context.Medicaments.ToList(); }
         }
     }
 }

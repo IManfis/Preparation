@@ -5,6 +5,6 @@ namespace Preparation.Domain.Abstract
 {
     public interface IPreparationRepository
     {
-        IEnumerable<Medicament> Medicaments { get; }  
+        ICollection<Medicament> Medicaments { get; }  
     }
 }
