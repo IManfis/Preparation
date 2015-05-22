@@ -28,6 +28,7 @@ namespace Preparation.WebUI.Infrastructure
         private void AddBindings()
         {
             _ninjectKernel.Bind<IPreparationRepository>().To<EFPrepartionRepository>();
+            _ninjectKernel.Bind<IPreparationStore>().To<PreparationStore>();
         } 
     }
 }

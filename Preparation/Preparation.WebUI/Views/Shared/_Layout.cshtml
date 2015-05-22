@@ -1,23 +1,52 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet"/>
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="navbar navbar-inverse" role="navigation">
-        <a class="navbar-brand" href="#">Интернет-справочник лекарственных препаратов</a>
+<div class="navbar navbar-inverse" role="navigation">
+    <a class="navbar-brand" href="#">Интернет-справочник лекарственных препаратов</a>
+</div>
+<div class="row panel">
+    <div id="categories" class="col-xs-3">
+        <a class="btn btn-primary btn-lg btn-block" href="@Url.Action("List", "Preparation")" role="button">Главная</a>
+
+
+        <p class="lead" style="text-align: center; margin-top: 50px; margin-bottom: 10px;">Фильтрация:</p>
+        <a role="button" class="btn btn-default btn-lg btn-block" href="#" onclick="openbox('Producer')">По производителю</a>
+        <a role="button" class="btn btn-default btn-lg btn-block" href="#" onclick="openbox('ReleaseForm')">По форме выпуска</a>
+        <a role="button" class="btn btn-default btn-lg btn-block" href="#" onclick="openbox('ActionSubstance')">По составу</a>
     </div>
-    <div class="row panel">
-        <div id="categories" class="col-xs-3">
-            Сюда добавим контент позже
-        </div>
-        <div class="col-xs-8">
-            @RenderBody()
-        </div>
+    <div class="col-xs-8">
+        @RenderBody()
     </div>
+</div>
 </body>
 </html>
+
+
+
+
+
+
+<script type="text/javascript" language="JavaScript">
+    function openbox(id) {
+
+        display = document.getElementById(id).style.display;
+
+        if (display == 'none') {
+
+            document.getElementById(id).style.display = 'block';
+
+        } else {
+
+            document.getElementById(id).style.display = 'none';
+
+        }
+
+    }
+</script>

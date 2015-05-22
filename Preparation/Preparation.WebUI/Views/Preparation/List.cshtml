@@ -5,12 +5,9 @@
     ViewBag.Title = "Medicament";
 }
 
+@Html.Partial("FilterSummary")
+
 @foreach (var p in @Model)
 {
-    <div class="well">
-        <h3>
-            <strong>@p.Name</strong>
-        </h3>
-        <span class="lead">@p.Anotation</span>
-    </div>
+    @Html.Partial("MedicamentSummary",p)
 }

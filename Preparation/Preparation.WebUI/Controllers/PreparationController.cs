@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Preparation.Domain.Abstract;
+using Preparation.Domain.Entities;
 
 namespace Preparation.WebUI.Controllers
 {
@@ -8,16 +10,23 @@ namespace Preparation.WebUI.Controllers
         //
         // GET: /Preparation/
 
-        private IPreparationRepository _repository;
+        private IPreparationStore preparationStore;
 
-        public PreparationController(IPreparationRepository repository)
+        public PreparationController(IPreparationStore preparationStore)
         {
-            _repository = repository;
+            this.preparationStore = preparationStore;
         }
 
         public ViewResult List()
         {
-            return View(_repository.Medicaments);
+            var model = preparationStore.GetAll();
+
+            return View(model);
+        }
+
+        public PartialViewResult Filter(string filter, string value)
+        {
+            return PartialView();
         }
     }
 }

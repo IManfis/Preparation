@@ -77,8 +77,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IPreparationRepository.cs" />
+    <Compile Include="Abstract\IPreparationStore.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFPrepartionRepository.cs" />
+    <Compile Include="Concrete\PreparationStore.cs" />
     <Compile Include="Entities\Medicament.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

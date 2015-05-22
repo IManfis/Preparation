@@ -15,5 +15,18 @@
         public string Producer { get; set; }
 
         public string ReleaseForm { get; set; }
+
+
+
+        public Medicament(string Name, string Anotation, string Image, string ActiveSubstance, string Producer, string ReleaseForm)
+        {
+            this.Name = Name;
+            this.Anotation = Anotation;
+            this.Image = Image;
+            this.ActiveSubstance = ActiveSubstance;
+            this.Producer = Producer;
+            this.ReleaseForm = ReleaseForm;
+        }
+        public Medicament() { }
     }
 }
