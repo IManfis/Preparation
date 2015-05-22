@@ -1,0 +1,16 @@
+﻿@using Preparation.Domain.Entities
+@model IEnumerable<Medicament>
+
+@{
+    ViewBag.Title = "Medicament";
+}
+
+@foreach (var p in @Model)
+{
+    <div class="well">
+        <h3>
+            <strong>@p.Name</strong>
+        </h3>
+        <span class="lead">@p.Anotation</span>
+    </div>
+}
