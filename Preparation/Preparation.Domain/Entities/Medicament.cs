@@ -18,14 +18,14 @@
 
 
 
-        public Medicament(string Name, string Anotation, string Image, string ActiveSubstance, string Producer, string ReleaseForm)
+        public Medicament(string name, string anotation, string image, string activeSubstance, string producer, string releaseForm)
         {
-            this.Name = Name;
-            this.Anotation = Anotation;
-            this.Image = Image;
-            this.ActiveSubstance = ActiveSubstance;
-            this.Producer = Producer;
-            this.ReleaseForm = ReleaseForm;
+            this.Name = name;
+            this.Anotation = anotation;
+            this.Image = image;
+            this.ActiveSubstance = activeSubstance;
+            this.Producer = producer;
+            this.ReleaseForm = releaseForm;
         }
         public Medicament() { }
     }

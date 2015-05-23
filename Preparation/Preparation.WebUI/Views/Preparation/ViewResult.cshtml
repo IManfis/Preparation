@@ -1,0 +1,27 @@
+﻿@model Preparation.Domain.Entities.Medicament
+
+@{
+    ViewBag.Title = "Medicament";
+}
+
+<div class="well">
+    <h3>
+        <strong>@Model.Name</strong>
+    </h3>
+
+    <div>
+        <img src="~/Content/Image/@Model.Image" alt="..." class="img-rounded" style="width: 140px; height: 140px;">
+    </div>
+
+    <h3 class="lead" style="margin-top: 20px;"><strong>Краткое описание:</strong></h3>
+    <span class="lead">@Model.Anotation</span>
+    
+    <h3 class="lead" style="margin-top: 20px;"><strong>Производитель:</strong></h3>
+    <span class="lead">@Model.Producer</span><br/>
+    
+    <h3 class="lead" style="margin-top: 20px;"><strong>Форма выпуска:</strong></h3>
+    <span class="lead">@Model.ReleaseForm</span><br />
+    
+    <h3 class="lead" style="margin-top: 20px;"><strong>Состав:</strong></h3>
+    <span class="lead">@Model.ActiveSubstance</span><br />
+</div>

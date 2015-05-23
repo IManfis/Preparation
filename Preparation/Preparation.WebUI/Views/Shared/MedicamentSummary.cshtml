@@ -2,7 +2,7 @@
 
 <div class="well">
     <h3>
-        <strong>@Model.Name</strong>
+        <a href="@Url.Action("ViewResult","Preparation",new{id = Model.ID})"><strong>@Model.Name</strong></a>
     </h3>
     <span class="lead">@Model.Anotation</span>
 </div>

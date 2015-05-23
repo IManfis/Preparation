@@ -147,6 +147,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Image\ambroksol.jpg" />
+    <Content Include="Content\Image\coldrex.jpg" />
+    <Content Include="Content\Image\essel.jpg" />
+    <Content Include="Content\Image\fervex.jpg" />
+    <Content Include="Content\Image\kalendula.jpg" />
+    <Content Include="Content\Image\mom.jpg" />
+    <Content Include="Content\Image\nastoyka-polyni.jpg" />
+    <Content Include="Content\Image\strepsils.jpg" />
+    <Content Include="Content\Image\ugol.jpg" />
+    <Content Include="Content\Image\ultop.jpg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -174,6 +184,7 @@
     <Content Include="Views\Shared\MedicamentSummary.cshtml" />
     <Content Include="Views\Shared\FilterSummary.cshtml" />
     <Content Include="Views\Shared\Filter.cshtml" />
+    <Content Include="Views\Preparation\ViewResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

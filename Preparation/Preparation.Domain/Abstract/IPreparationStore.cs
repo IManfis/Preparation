@@ -7,6 +7,8 @@ namespace Preparation.Domain.Abstract
     {
         List<Medicament> GetAll();
 
+        Medicament Get(int id);
+
         List<Medicament> FilterMedicaments(string filter,string value);
     }
 }

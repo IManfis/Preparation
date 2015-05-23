@@ -24,6 +24,13 @@ namespace Preparation.WebUI.Controllers
             return View(model);
         }
 
+        public ViewResult ViewResult(int id)
+        {
+            var model = _preparationStore.Get(id);
+
+            return View(model);
+        }
+
         public ViewResult Filter(string filter, string value)
         {
             var model = _preparationStore.FilterMedicaments(filter, value);

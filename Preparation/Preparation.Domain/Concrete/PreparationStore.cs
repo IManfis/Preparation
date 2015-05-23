@@ -21,6 +21,24 @@ namespace Preparation.Domain.Concrete
             return _repository.Medicaments.ToList();
         }
 
+        public Medicament Get(int id)
+        {
+            Medicament modelMedicament = null;
+            foreach (var item in _repository.Medicaments.Where(p => p.ID == id))
+            {
+                modelMedicament = new Medicament
+                {
+                    Name = item.Name,
+                    ActiveSubstance = item.ActiveSubstance, 
+                    Anotation = item.Anotation,
+                    Image = item.Image,
+                    Producer = item.Producer,
+                    ReleaseForm = item.ReleaseForm
+                };
+            }
+            return (modelMedicament);
+        }
+
         public List<Medicament> FilterMedicaments(string filter, string value)
         {
             switch (filter)
