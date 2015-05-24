@@ -8,20 +8,30 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+
 <div class="navbar navbar-inverse" role="navigation">
     <a class="navbar-brand" href="#">Интернет-справочник лекарственных препаратов</a>
 </div>
 <div class="row panel">
+    <div>
+    </div>
     <div id="categories" class="col-xs-3">
         <a class="btn btn-primary btn-lg btn-block" href="@Url.Action("List", "Preparation")" role="button">Главная</a>
 
+        <a role="button" class="btn btn-default btn-lg btn-block" href="@Url.Action("Add","Preparation")" style="margin-top: 10px;">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить препарат
+        </a>
 
         <p class="lead" style="text-align: center; margin-top: 50px; margin-bottom: 10px;">Фильтрация:</p>
-        <a role="button" class="btn btn-default btn-lg btn-block" href="#" onclick="openbox('Producer')">По производителю</a>
-        <a role="button" class="btn btn-default btn-lg btn-block" href="#" onclick="openbox('ReleaseForm')">По форме выпуска</a>
-        <a role="button" class="btn btn-default btn-lg btn-block" href="#" onclick="openbox('ActionSubstance')">По составу</a>
+        <a role="button" class="btn btn-default btn-lg btn-block" href="#" onclick=" openbox('Producer') ">По производителю</a>
+        <a role="button" class="btn btn-default btn-lg btn-block" href="#" onclick=" openbox('ReleaseForm') ">По форме выпуска</a>
+        <a role="button" class="btn btn-default btn-lg btn-block" href="#" onclick=" openbox('ActionSubstance') ">По составу</a>
     </div>
     <div class="col-xs-8">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
         @RenderBody()
     </div>
 </div>

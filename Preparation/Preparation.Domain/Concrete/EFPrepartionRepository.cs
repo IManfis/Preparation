@@ -7,11 +7,11 @@ namespace Preparation.Domain.Concrete
 {
     public class EFPrepartionRepository : IPreparationRepository
     {
-        EFDbContext context = new EFDbContext();
+        EFDbContext _context = new EFDbContext();
 
         public ICollection<Medicament> Medicaments
         {
-            get { return context.Medicaments.ToList(); }
+            get { return _context.Medicaments.ToList(); }
         }
     }
 }

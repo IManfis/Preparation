@@ -1,0 +1,75 @@
+﻿@model Preparation.Domain.Entities.Medicament
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Редактирование препарата: @Model.Name</h2>
+
+@using (Html.BeginForm("Edit", "Preparation", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Препарат</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            <input type="text" name="Name" class="form-control" value="@Model.Name" required/>
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Anotation)
+        </div>
+        <div class="editor-field">
+            <textarea class="form-control" name="Anotation" rows="3" required>@Model.Anotation</textarea>
+            @Html.ValidationMessageFor(model => model.Anotation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Image)
+        </div>
+        <div class="editor-field">
+            <input type="file" name="Image" accept="image/*" required/>
+            @Html.ValidationMessageFor(model => model.Image)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ActiveSubstance)
+        </div>
+        <div class="editor-field">
+            <input type="text" class="form-control" name="ActiveSubstance" value="@Model.ActiveSubstance" required/>
+            @Html.ValidationMessageFor(model => model.ActiveSubstance)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Producer)
+        </div>
+        <div class="editor-field">
+            <input type="text" class="form-control" name="Producer" value="@Model.Producer" required/>
+            @Html.ValidationMessageFor(model => model.Producer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReleaseForm)
+        </div>
+        <div class="editor-field">
+            <input type="text" class="form-control" name="ReleaseForm" value="@Model.ReleaseForm" required/>
+            @Html.ValidationMessageFor(model => model.ReleaseForm)
+        </div>
+
+        <p>
+            <input type="submit" value="Сохранить" style="margin-top: 10px;" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Вернуться к списку препаратов", "List")
+</div>
+

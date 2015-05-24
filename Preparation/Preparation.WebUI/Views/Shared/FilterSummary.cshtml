@@ -4,7 +4,7 @@
 @using (Html.BeginForm("Filter", "Preparation", FormMethod.Post, new {@class = "form-inline", id = "Producer", style = "display: none; margin-bottom: 20px;" }))
 {
     <input type="hidden" name="filter" value="Producer" />
-    <p class="lead">Выберите производителя</p>
+    <p class="lead">Введите производителя</p>
     <div class="form-group">
         <input type="text" name="value" class="form-control">
     </div>
@@ -13,7 +13,7 @@
 @using (Html.BeginForm("Filter", "Preparation", FormMethod.Post, new {@class = "form-inline", id = "ReleaseForm", style = "display: none; margin-bottom: 20px;" }))
 {
     <input type="hidden" name="filter" value="ReleaseForm" />
-    <p class="lead">Выберите форму выпуска</p>
+    <p class="lead">Введите форму выпуска</p>
     <div class="form-group">
         <input type="text" name="value" class="form-control" value="">
 
@@ -23,7 +23,7 @@
 @using (Html.BeginForm("Filter", "Preparation", FormMethod.Post, new { @class = "form-inline", id = "ActionSubstance", style = "display: none; margin-bottom: 20px;" }))
 {
     <input type="hidden" name="filter" value="ActionSubstance" />
-    <p class="lead">Выберите состав</p>
+    <p class="lead">Введите состав</p>
     <div class="form-group">
         <input type="text" name="value" class="form-control">
     </div>

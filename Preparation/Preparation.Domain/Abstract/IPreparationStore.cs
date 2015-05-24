@@ -10,5 +10,9 @@ namespace Preparation.Domain.Abstract
         Medicament Get(int id);
 
         List<Medicament> FilterMedicaments(string filter,string value);
+
+        void Save(Medicament medicament);
+
+        void Delete(int id);
     }
 }

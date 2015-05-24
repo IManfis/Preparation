@@ -10,6 +10,7 @@ namespace Preparation.Domain.Concrete
     {
 
         private readonly IPreparationRepository _repository;
+        private EFDbContext context = new EFDbContext();
 
         public PreparationStore(IPreparationRepository repository)
         {
@@ -58,5 +59,36 @@ namespace Preparation.Domain.Concrete
             }
         }
 
+        public void Save(Medicament medicament)
+        {
+            if (medicament.ID == 0)
+            {
+                context.Medicaments.Add(medicament);
+            }
+            else
+            {
+                Medicament dbEntry = context.Medicaments.First(p => p.ID == medicament.ID);
+                if (dbEntry != null)
+                {
+                    dbEntry.Name = medicament.Name;
+                    dbEntry.Anotation = medicament.Anotation;
+                    dbEntry.Image = medicament.Name;
+                    dbEntry.ActiveSubstance = medicament.ActiveSubstance;
+                    dbEntry.Producer = medicament.Producer;
+                    dbEntry.ReleaseForm = medicament.ReleaseForm;
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            Medicament dbEntry = context.Medicaments.Find(id);
+            if (dbEntry != null)
+            {
+                context.Medicaments.Remove(dbEntry);
+                context.SaveChanges();
+            }
+        }
     }
 }
