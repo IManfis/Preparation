@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Web.Http.Tracing;
 using System.Web.Mvc;
 using Preparation.Domain.Abstract;
 using Preparation.Domain.Entities;
+using Preparation.WebUI.Models;
+using AutoMapper;
 
 namespace Preparation.WebUI.Controllers
 {
@@ -11,56 +14,83 @@ namespace Preparation.WebUI.Controllers
         // GET: /Preparation/
 
         private readonly IPreparationStore _preparationStore;
+        private IPreparationRepository _preparationRepository;
 
-        public PreparationController(IPreparationStore preparationStore)
+        public PreparationController(IPreparationStore preparationStore, IPreparationRepository preparationRepository)
         {
             this._preparationStore = preparationStore;
+            _preparationRepository = preparationRepository;
         }
 
         public ViewResult List()
         {
-            var model = _preparationStore.GetAll();
-            return View(model);
+            Mapper.CreateMap<Medicament, MedicamentViewModel>();
+
+            var users = Mapper.Map<IEnumerable<Medicament>, List<MedicamentViewModel>>(_preparationStore.GetAll());
+
+            return View(users);
         }
 
         public ViewResult ViewResult(int id)
         {
-            var model = _preparationStore.Get(id);
-            return View(model);
+            Mapper.CreateMap<Medicament, MedicamentViewModel>();
+
+            var users = Mapper.Map<Medicament, MedicamentViewModel>(_preparationStore.Get(id));
+            return View(users);
         }
 
         public ViewResult Filter(string filter, string value)
         {
-            var model = _preparationStore.FilterMedicaments(filter, value);
-            return View("List",model);
+            Mapper.CreateMap<Medicament, MedicamentViewModel>();
+
+            var users = Mapper.Map<IEnumerable<Medicament>, List<MedicamentViewModel>>(_preparationStore.FilterMedicaments(filter, value));
+
+            return View("List",users);
         }
 
         public ViewResult Edit(int id)
         {
-            var model = _preparationStore.Get(id);
-            return View(model);
+                Mapper.CreateMap<Medicament, MedicamentViewModel>();
+
+                var users = Mapper.Map<Medicament, MedicamentViewModel>(_preparationStore.Get(id));
+
+                return View(users);
         }
 
         [HttpPost]
-        public ActionResult Edit(Medicament model)
+        public ActionResult Edit(MedicamentViewModel model)
         {
-            _preparationStore.Save(model);
-            TempData["message"] = string.Format("Препарат \"{0}\" был сохранен", model.Name);
+            if (ModelState.IsValid)
+            {
+                Mapper.CreateMap<MedicamentViewModel, Medicament>();
+
+                var users = Mapper.Map<MedicamentViewModel, Medicament>(model);
+                _preparationStore.Save(users);
+
+                TempData["message"] = string.Format("Препарат \"{0}\" был сохранен", model.Name);
+                return RedirectToAction("List");
+            }
+            TempData["message"] = string.Format("Беда");
             return RedirectToAction("List");
         }
 
         public ViewResult Add()
         {
-            return View("Edit",new Medicament());
+            return View("Edit",new MedicamentViewModel());
         }
 
         public ViewResult Delete(int id)
         {
-            var model = _preparationStore.Get(id);
+            Mapper.CreateMap<Medicament, MedicamentViewModel>();
+
+            var users = Mapper.Map<Medicament, MedicamentViewModel>(_preparationStore.Get(id));
             _preparationStore.Delete(id);
-            TempData["message"] = string.Format("Препарат \"{0}\" был удален",model.Name);
-            var model1 = _preparationStore.GetAll();
-            return View("List",model1);
+            TempData["message"] = string.Format("Препарат \"{0}\" был удален",users.Name);
+            Mapper.CreateMap<Medicament, MedicamentViewModel>();
+
+            var users1 = Mapper.Map<IEnumerable<Medicament>, List<MedicamentViewModel>>(_preparationStore.GetAll());
+
+            return View("List",users1);
         }
     }
 }

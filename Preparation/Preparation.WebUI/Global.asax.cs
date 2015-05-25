@@ -1,8 +1,10 @@
-﻿using System.Web;
+﻿using System.Data.Entity;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Preparation.WebUI.Infrastructure;
+using Preparation.WebUI.Models;
 
 namespace Preparation.WebUI
 {
@@ -14,6 +16,7 @@ namespace Preparation.WebUI
         {
             AreaRegistration.RegisterAllAreas();
 
+            //Database.SetInitializer(new MedicamentInicialization());
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

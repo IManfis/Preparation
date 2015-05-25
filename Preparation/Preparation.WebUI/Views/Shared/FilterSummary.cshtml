@@ -1,5 +1,5 @@
-﻿@using Preparation.Domain.Entities
-@model IEnumerable<Medicament>
+﻿@using Preparation.WebUI.Models
+@model IEnumerable<MedicamentViewModel>
 
 @using (Html.BeginForm("Filter", "Preparation", FormMethod.Post, new {@class = "form-inline", id = "Producer", style = "display: none; margin-bottom: 20px;" }))
 {

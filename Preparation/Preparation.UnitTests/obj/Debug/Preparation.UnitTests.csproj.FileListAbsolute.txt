@@ -41,3 +41,6 @@ D:\Work\Study\Project\Preparation\Preparation.UnitTests\obj\Debug\Preparation.Un
 D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\Preparation.UnitTests.dll.config
 D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\EntityFramework.dll
 D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\EntityFramework.xml
+D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\AutoMapper.dll
+D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\AutoMapper.pdb
+D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\AutoMapper.xml

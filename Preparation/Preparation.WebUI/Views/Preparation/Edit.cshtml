@@ -1,4 +1,4 @@
-﻿@model Preparation.Domain.Entities.Medicament
+﻿@model Preparation.WebUI.Models.MedicamentViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -8,6 +8,7 @@
 
 @using (Html.BeginForm("Edit", "Preparation", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -19,7 +20,7 @@
             @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
-            <input type="text" name="Name" class="form-control" value="@Model.Name" required/>
+            <input type="text" name="Name" class="form-control" data-val="true" data-val-regex="Введите только буквы" data-val-regex-pattern="^[(A-z)\(А-я)\(ё)\(Ё)\s]+$" data-val-required="Пожалуйста, введите название препарата" value="@Model.Name" />
             @Html.ValidationMessageFor(model => model.Name)
         </div>
 
@@ -27,7 +28,7 @@
             @Html.LabelFor(model => model.Anotation)
         </div>
         <div class="editor-field">
-            <textarea class="form-control" name="Anotation" rows="3" required>@Model.Anotation</textarea>
+            <textarea type="text" name="Anotation" class="form-control" data-val="true" data-val-required="Пожалуйста, введите краткое описание" id="Anotation" name="Anotation" rows="2">@Model.Anotation</textarea>
             @Html.ValidationMessageFor(model => model.Anotation)
         </div>
 
@@ -35,7 +36,7 @@
             @Html.LabelFor(model => model.Image)
         </div>
         <div class="editor-field">
-            <input type="file" name="Image" accept="image/*" required/>
+            <input type="file" name="Image" required />
             @Html.ValidationMessageFor(model => model.Image)
         </div>
 
@@ -43,7 +44,7 @@
             @Html.LabelFor(model => model.ActiveSubstance)
         </div>
         <div class="editor-field">
-            <input type="text" class="form-control" name="ActiveSubstance" value="@Model.ActiveSubstance" required/>
+            <input type="text" name="ActiveSubstance" class="form-control" data-val="true" data-val-required="Пожалуйста, введите состав" value="@Model.ActiveSubstance" />
             @Html.ValidationMessageFor(model => model.ActiveSubstance)
         </div>
 
@@ -51,7 +52,7 @@
             @Html.LabelFor(model => model.Producer)
         </div>
         <div class="editor-field">
-            <input type="text" class="form-control" name="Producer" value="@Model.Producer" required/>
+            <input type="text" name="Producer" class="form-control" data-val="true" data-val-required="Пожалуйста, введите производителя" value="@Model.Producer" />
             @Html.ValidationMessageFor(model => model.Producer)
         </div>
 
@@ -59,7 +60,7 @@
             @Html.LabelFor(model => model.ReleaseForm)
         </div>
         <div class="editor-field">
-            <input type="text" class="form-control" name="ReleaseForm" value="@Model.ReleaseForm" required/>
+            <input type="text" name="ReleaseForm" class="form-control" data-val="true" data-val-required="Пожалуйста, введите форму выпуска" value="@Model.ReleaseForm" />
             @Html.ValidationMessageFor(model => model.ReleaseForm)
         </div>
 
