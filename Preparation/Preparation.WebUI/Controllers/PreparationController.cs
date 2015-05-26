@@ -14,12 +14,10 @@ namespace Preparation.WebUI.Controllers
         // GET: /Preparation/
 
         private readonly IPreparationStore _preparationStore;
-        private IPreparationRepository _preparationRepository;
 
-        public PreparationController(IPreparationStore preparationStore, IPreparationRepository preparationRepository)
+        public PreparationController(IPreparationStore preparationStore)
         {
             this._preparationStore = preparationStore;
-            _preparationRepository = preparationRepository;
         }
 
         public ViewResult List()

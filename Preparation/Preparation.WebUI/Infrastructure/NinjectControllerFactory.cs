@@ -12,7 +12,7 @@ namespace Preparation.WebUI.Infrastructure
 {
     public class NinjectControllerFactory : DefaultControllerFactory
     {
-        private IKernel _ninjectKernel;
+        private readonly IKernel _ninjectKernel;
         public NinjectControllerFactory()
         {
             _ninjectKernel = new StandardKernel();

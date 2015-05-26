@@ -8,9 +8,8 @@ namespace Preparation.Domain.Concrete
 {
     public class PreparationStore : IPreparationStore
     {
-
         private readonly IPreparationRepository _repository;
-        private EFDbContext context = new EFDbContext();
+        private readonly EFDbContext _context = new EFDbContext();
 
         public PreparationStore(IPreparationRepository repository)
         {
@@ -63,31 +62,31 @@ namespace Preparation.Domain.Concrete
         {
             if (medicament.ID == 0)
             {
-                context.Medicaments.Add(medicament);
+                _context.Medicaments.Add(medicament);
             }
             else
             {
-                Medicament dbEntry = context.Medicaments.First(p => p.ID == medicament.ID);
+                Medicament dbEntry = _context.Medicaments.First(p => p.ID == medicament.ID);
                 if (dbEntry != null)
                 {
                     dbEntry.Name = medicament.Name;
                     dbEntry.Anotation = medicament.Anotation;
-                    dbEntry.Image = medicament.Name;
+                    dbEntry.Image = medicament.Image;
                     dbEntry.ActiveSubstance = medicament.ActiveSubstance;
                     dbEntry.Producer = medicament.Producer;
                     dbEntry.ReleaseForm = medicament.ReleaseForm;
                 }
             }
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            Medicament dbEntry = context.Medicaments.Find(id);
+            Medicament dbEntry = _context.Medicaments.Find(id);
             if (dbEntry != null)
             {
-                context.Medicaments.Remove(dbEntry);
-                context.SaveChanges();
+                _context.Medicaments.Remove(dbEntry);
+                _context.SaveChanges();
             }
         }
     }

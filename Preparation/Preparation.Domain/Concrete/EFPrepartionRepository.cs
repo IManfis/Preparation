@@ -7,7 +7,7 @@ namespace Preparation.Domain.Concrete
 {
     public class EFPrepartionRepository : IPreparationRepository
     {
-        EFDbContext _context = new EFDbContext();
+        readonly EFDbContext _context = new EFDbContext();
 
         public ICollection<Medicament> Medicaments
         {
