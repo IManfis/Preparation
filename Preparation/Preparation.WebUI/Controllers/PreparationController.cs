@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http.Tracing;
 using System.Web.Mvc;
 using Preparation.Domain.Abstract;
 using Preparation.Domain.Entities;
 using Preparation.WebUI.Models;
 using AutoMapper;
+using Preparation.WebUI.Filter;
 
 namespace Preparation.WebUI.Controllers
 {
@@ -14,13 +16,15 @@ namespace Preparation.WebUI.Controllers
         // GET: /Preparation/
 
         private readonly IPreparationStore _preparationStore;
-
-        public PreparationController(IPreparationStore preparationStore)
+        private IPreparationRepository _repository;
+        public PreparationController(IPreparationStore preparationStore, IPreparationRepository repository)
         {
             this._preparationStore = preparationStore;
+            _repository = repository;
         }
 
-        public ViewResult List()
+        //[Compress]
+        public ActionResult List()
         {
             Mapper.CreateMap<Medicament, MedicamentViewModel>();
 
@@ -29,7 +33,8 @@ namespace Preparation.WebUI.Controllers
             return View(users);
         }
 
-        public ViewResult ViewResult(int id)
+        [Compress]
+        public ActionResult ViewResult(int id)
         {
             Mapper.CreateMap<Medicament, MedicamentViewModel>();
 
@@ -37,16 +42,22 @@ namespace Preparation.WebUI.Controllers
             return View(users);
         }
 
-        public ViewResult Filter(string filter, string value)
+        [Compress]
+        public ActionResult Filter(string filter, string value)
         {
             Mapper.CreateMap<Medicament, MedicamentViewModel>();
 
             var users = Mapper.Map<IEnumerable<Medicament>, List<MedicamentViewModel>>(_preparationStore.FilterMedicaments(filter, value));
 
+            if (!users.Any() )
+            {
+                TempData["message"] = string.Format("Ничего не найдено");
+            }
             return View("List",users);
         }
 
-        public ViewResult Edit(int id)
+        [Compress]
+        public ActionResult Edit(int id)
         {
                 Mapper.CreateMap<Medicament, MedicamentViewModel>();
 
@@ -72,12 +83,12 @@ namespace Preparation.WebUI.Controllers
             return RedirectToAction("List");
         }
 
-        public ViewResult Add()
+        public ActionResult Add()
         {
             return View("Edit",new MedicamentViewModel());
         }
 
-        public ViewResult Delete(int id)
+        public ActionResult Delete(int id)
         {
             Mapper.CreateMap<Medicament, MedicamentViewModel>();
 

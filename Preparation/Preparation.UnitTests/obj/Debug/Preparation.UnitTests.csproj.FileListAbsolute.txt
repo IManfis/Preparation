@@ -44,4 +44,3 @@ D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\EntityFramewor
 D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\AutoMapper.dll
 D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\AutoMapper.pdb
 D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\AutoMapper.xml
-D:\Work\Study\Project\Preparation\Preparation.UnitTests\bin\Debug\AutoMapper.Net4.dll

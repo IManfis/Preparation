@@ -25,7 +25,7 @@ namespace Preparation.UnitTests
                 new Medicament{ ID = 4, Name = "Preparat4", Producer = "Prod2"},
                 new Medicament{ ID = 5, Name = "Preparat5", Producer = "Prod3"}
             });
-            PreparationController controller = new PreparationController(mock.Object);
+            PreparationController controller = new PreparationController(mock.Object,null);
             //action
             List<MedicamentViewModel> result = (List<MedicamentViewModel>)(controller.List().Model);
             //assert
@@ -36,8 +36,8 @@ namespace Preparation.UnitTests
         public void Can_Filter()
         {
             //arrange
-            Mock<IPreparationStore> mock = new Mock<IPreparationStore>();
-            mock.Setup(m => m.GetAll()).Returns(new List<Medicament>()
+            Mock<IPreparationRepository> mock = new Mock<IPreparationRepository>();
+            mock.Setup(m => m.Medicaments).Returns(new List<Medicament>()
             {
                 new Medicament{ ID = 1, Name = "Preparat1", Producer = "Prod1"},
                 new Medicament{ ID = 2, Name = "Preparat2", Producer = "Prod2"},
@@ -45,7 +45,7 @@ namespace Preparation.UnitTests
                 new Medicament{ ID = 4, Name = "Preparat4", Producer = "Prod2"},
                 new Medicament{ ID = 5, Name = "Preparat5", Producer = "Prod3"}
             });
-            PreparationController controller = new PreparationController(mock.Object);
+            PreparationController controller = new PreparationController(null,mock.Object);
             //action
             List<MedicamentViewModel> result = (List<MedicamentViewModel>) (controller.Filter("Producer", "Prod1").Model);
             //assert
