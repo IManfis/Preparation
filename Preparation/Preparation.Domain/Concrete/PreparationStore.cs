@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Preparation.Domain.Abstract;
 using Preparation.Domain.Entities;
@@ -21,7 +20,7 @@ namespace Preparation.Domain.Concrete
             return _repository.Medicaments.ToList();
         }
 
-        public Medicament Get(int id)
+        public Medicament GetById(int id)
         {
             Medicament modelMedicament = null;
             foreach (var item in _repository.Medicaments.Where(p => p.ID == id))
@@ -45,16 +44,12 @@ namespace Preparation.Domain.Concrete
             {
                 case "Producer":
                    return _repository.Medicaments.Where(p => value == null || p.Producer == value).OrderBy(p => p.ID).ToList();
-                    break;
                 case "ReleaseForm":
                     return _repository.Medicaments.Where(p => p.ReleaseForm == value).OrderBy(p => p.ID).ToList();
-                    break;
                 case "ActionSubstance":
                     return _repository.Medicaments.Where(p => p.ActiveSubstance == value).OrderBy(p => p.ID).ToList();
-                    break;
                 default:
                     return _repository.Medicaments.OrderBy(p => p.ID).ToList();
-                    break;
             }
         }
 
